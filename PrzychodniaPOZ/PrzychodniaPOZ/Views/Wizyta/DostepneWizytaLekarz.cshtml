@@ -1,7 +1,65 @@
-﻿
+﻿@model IEnumerable<PrzychodniaPOZ.Models.WizytaLekarz>
+
+
+
 @{
     ViewBag.Title = "DostepneWizytaLekarz";
+    if (Session["PacjentId"] == null)
+    {
+        Response.Redirect("~/Home/Logowanie");
+    }
 }
 
-<h2>DostepneWizytaLekarz</h2>
+<h2>Dostępne wizyty do Lekarzy</h2>
 
+
+<table class="table">
+    <tr>
+        <th>
+            Lekarz
+        </th>
+        <th>
+            Specjalizacja
+        </th>
+        <th>
+            Data Wizyty
+        </th>
+        <th>
+            Godzina
+        </th>
+        <th>
+            
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Lekarz.Nazwisko)
+                @Html.DisplayFor(modelItem => item.Lekarz.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specjalizacja.Nazwa)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.DataWizyty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodzinaWizyty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Zapisz się na wizytę", "Edit", new { id = item.WizytaLekarzId })
+               
+            </td>
+        </tr>
+    }
+
+</table>

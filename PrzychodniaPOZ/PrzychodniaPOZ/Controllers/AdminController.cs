@@ -10,7 +10,17 @@ namespace PrzychodniaPOZ.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
+        public ActionResult Index()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Logowanie()
+        {
+            Pracownik model = new Pracownik();
+            return View(model);
+        }
+        [HttpPost]
         public ActionResult Logowanie(Pracownik model)
         {
             using (PrzychodniaContext db = new PrzychodniaContext())
@@ -23,68 +33,21 @@ namespace PrzychodniaPOZ.Controllers
                 }
                 else
                 {
-                    Session["PacjentId"] = pracownikDetal.PracownikId;
+                    Session["PracownikId"] = pracownikDetal.PracownikId;
                     Session["Name"] = pracownikDetal.Imie + " " + pracownikDetal.Nazwisko;
                     return RedirectToAction("Index", "Admin");
                 }
             }
         }
 
-        public ActionResult PokazWizytyLekarz()
+
+
+
+        public ActionResult Wyloguj()
         {
-            return Json(new { foo = "bar", baz = "Blech" });
+            int user = (int)Session["PracownikID"];
+            Session.Abandon();
+            return RedirectToAction("Logowanie", "Admin");
         }
-
-        public ActionResult DodajWizyteLekarz()
-        {
-            return View();
-        }
-
-        public ActionResult EdytujWizyteLekarz()
-        {
-            return View();
-        }
-
-        public ActionResult UsunWizyteLekarz()
-        {
-            return View();
-        }
-
-        public ActionResult PokazBadanie()
-        {
-            return View();
-        }
-
-        public ActionResult DodajBadanie()
-        {
-            return View();
-        }
-
-        public ActionResult EdytujBadanie()
-        {
-            return View();
-        }
-
-        public ActionResult UsunBadanie()
-        {
-            return View();
-        }
-
-        public ActionResult EdytujDanePacjenta()
-        {
-            return View();
-        }
-
-        public ActionResult UsunPacjenta()
-        {
-            return View();
-        }
-
-        public ActionResult Index()
-        {
-            throw new NotImplementedException();
-        }
-
-
     }
 }

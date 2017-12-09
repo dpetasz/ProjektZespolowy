@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
+}
+
+@if (Session["Name"] == null)
+{
+    <h2>Nie jesteś zalogowany</h2>
+}
+else
+{
+    <h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>
+}
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-2">
+        <label class="label-success">@ViewBag.SuccessMessage</label>
+    </div>
+</div>
+

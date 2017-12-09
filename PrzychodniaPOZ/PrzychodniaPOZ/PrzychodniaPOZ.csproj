@@ -184,6 +184,7 @@
     <Compile Include="Models\WizytaLekarz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\WizytaLekarzViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -247,6 +248,7 @@
     <Content Include="Views\Wizyta\DostepneWizytaLekarz.cshtml" />
     <Content Include="Views\Wizyta\DostepneBadania.cshtml" />
     <Content Include="Views\Admin\Logowanie.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,9 +1,11 @@
 ﻿@{
     ViewBag.Title = "Index";
+    
     if (Session["PacjentId"] == null)
     {
         Response.Redirect("~/Home/Logowanie");
     }
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>

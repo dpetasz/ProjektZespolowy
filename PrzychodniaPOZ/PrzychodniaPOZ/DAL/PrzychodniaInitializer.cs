@@ -18,7 +18,7 @@ namespace PrzychodniaPOZ.DAL
 
         private void SeedPrzychodniaData(PrzychodniaContext context)
         {
-           var pacjenci = new List<Pacjent>
+            var pacjenci = new List<Pacjent>
             {
                 new Pacjent() { Nazwisko = "Nowak", Imie = "Jan", Haslo = "1234", Email = "nowak@a.pl" ,ConfirmHaslo = "1234"},
                 new Pacjent() { Nazwisko = "kowalski", Imie = "Jan", Haslo = "1234", Email = "kowalski@a.pl" ,ConfirmHaslo = "1234"},
@@ -57,6 +57,44 @@ namespace PrzychodniaPOZ.DAL
             };
             lekarze.ForEach(l => context.Lekarz.Add(l));
             context.SaveChanges();
+
+            var badania = new List<Badanie>
+            {
+                new Badanie() { BadanieId = 1, Nazwa = "Pobranie krwi" }, 
+                new Badanie() { BadanieId = 2, Nazwa = "USG" }, 
+                new Badanie() { BadanieId = 3, Nazwa = "Holter" }, 
+                new Badanie() { BadanieId = 4, Nazwa = "EKG" }
+            };
+            badania.ForEach(b => context.Badanie.Add(b));
+            context.SaveChanges();
+            var specjalizacje = new List<Specjalizacja>
+            {
+                new Specjalizacja() { SpecjalizacjaId = 1, Nazwa = "Internista" }, 
+                new Specjalizacja() { SpecjalizacjaId = 2, Nazwa = "Kardiolog" }, 
+                new Specjalizacja() { SpecjalizacjaId = 3, Nazwa = "Neurolog" }, 
+                new Specjalizacja() { SpecjalizacjaId = 4, Nazwa = "Okulista" }, 
+                new Specjalizacja() { SpecjalizacjaId = 5, Nazwa = "Laryngolog" },
+                new Specjalizacja() { SpecjalizacjaId = 6, Nazwa = "Pediatra" }
+            };
+            specjalizacje.ForEach(s => context.Specjalizacja.Add(s));
+            context.SaveChanges();
+
+            var lekspec = new List<LekSpec>
+            {
+                new LekSpec(){LekarzId = 1, SpecjalizacjaId = 1},
+                new LekSpec(){LekarzId = 1, SpecjalizacjaId = 2},
+                new LekSpec(){LekarzId = 2, SpecjalizacjaId = 3},
+                new LekSpec(){LekarzId = 3, SpecjalizacjaId = 1},
+                new LekSpec(){LekarzId = 3, SpecjalizacjaId = 6},
+                new LekSpec(){LekarzId = 4, SpecjalizacjaId = 4},
+                new LekSpec(){LekarzId = 5, SpecjalizacjaId = 5},
+                new LekSpec(){LekarzId = 6, SpecjalizacjaId = 6},
+                new LekSpec(){LekarzId = 6, SpecjalizacjaId = 1},
+                new LekSpec(){LekarzId = 7, SpecjalizacjaId = 4}
+            };
+            lekspec.ForEach(ls => context.LekSpec.Add(ls));
+            context.SaveChanges();
+
         }
     }
 }
