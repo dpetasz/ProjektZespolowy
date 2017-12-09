@@ -1,0 +1,37 @@
+﻿@if (Session["PacjentId"] == null)
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Rejestracja", "Rejestracja", "Home")</li>
+            <li>@Html.ActionLink("Logowanie", "Logowanie", "Home")</li>
+        </ul>
+    </div>
+}
+else
+{
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Wizyta", "Index", "Wizyta")</li>
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a>@Session["Name"].ToString()</a>
+            </li>
+            <li><a href="@Url.Action("Wyloguj","Home")">Wyloguj</a></li>
+
+        </ul>
+    </div>
+}
+
+

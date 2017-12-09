@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+    if (Session["PacjentId"] == null)
+    {
+        Response.Redirect("~/Home/Logowanie");
+    }
+}
+
+<h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-2">
+        <label class="label-success">@ViewBag.SuccessMessage</label>
+    </div>
+</div>
+

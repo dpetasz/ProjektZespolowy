@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrzychodniaPOZModelStoreContainer" CdmEntityContainer="PrzychodniaPOZEntities">
+    <EntitySetMapping Name="Badanie">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.Badanie">
+        <MappingFragment StoreEntitySet="Badanie">
+          <ScalarProperty Name="BadanieId" ColumnName="BadanieId" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lekarz">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.Lekarz">
+        <MappingFragment StoreEntitySet="Lekarz">
+          <ScalarProperty Name="LekarzId" ColumnName="LekarzId" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LekSpec">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.LekSpec">
+        <MappingFragment StoreEntitySet="LekSpec">
+          <ScalarProperty Name="LekSpecId" ColumnName="LekSpecId" />
+          <ScalarProperty Name="LekarzId" ColumnName="LekarzId" />
+          <ScalarProperty Name="SpecjalizacjaId" ColumnName="SpecjalizacjaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacjent">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.Pacjent">
+        <MappingFragment StoreEntitySet="Pacjent">
+          <ScalarProperty Name="PacjentId" ColumnName="PacjentId" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+          <ScalarProperty Name="ConfirmHaslo" ColumnName="ConfirmHaslo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pracownik">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.Pracownik">
+        <MappingFragment StoreEntitySet="Pracownik">
+          <ScalarProperty Name="PracownikId" ColumnName="PracownikId" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="haslo" ColumnName="haslo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specjalizacja">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.Specjalizacja">
+        <MappingFragment StoreEntitySet="Specjalizacja">
+          <ScalarProperty Name="SpecjalizacjaId" ColumnName="SpecjalizacjaId" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WizytaBadanie">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.WizytaBadanie">
+        <MappingFragment StoreEntitySet="WizytaBadanie">
+          <ScalarProperty Name="WizytaBadanieId" ColumnName="WizytaBadanieId" />
+          <ScalarProperty Name="BadanieId" ColumnName="BadanieId" />
+          <ScalarProperty Name="PacjentId" ColumnName="PacjentId" />
+          <ScalarProperty Name="DataBadanie" ColumnName="DataBadanie" />
+          <ScalarProperty Name="GodzinaBadanie" ColumnName="GodzinaBadanie" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WizytaLekarz">
+      <EntityTypeMapping TypeName="PrzychodniaPOZModel.WizytaLekarz">
+        <MappingFragment StoreEntitySet="WizytaLekarz">
+          <ScalarProperty Name="WizytaLekarzId" ColumnName="WizytaLekarzId" />
+          <ScalarProperty Name="LekarzId" ColumnName="LekarzId" />
+          <ScalarProperty Name="PacjenId" ColumnName="PacjenId" />
+          <ScalarProperty Name="SpecjalizacjaId" ColumnName="SpecjalizacjaId" />
+          <ScalarProperty Name="DataWizyty" ColumnName="DataWizyty" />
+          <ScalarProperty Name="GodzinaWizyty" ColumnName="GodzinaWizyty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
