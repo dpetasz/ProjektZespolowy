@@ -14,11 +14,31 @@
 }
 else
 {
-    <h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>
+    <p>Jesteś zalogowany jako :@Session["Name"].ToString()</p>
 }
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-2">
-        <label class="label-success">@ViewBag.SuccessMessage</label>
+<div class="jumbotron">
+    <h1>Przychodnia POZ</h1>
+    <p class="lead">Panele Administratora systemu</p>
+    <p><a href="" class="btn btn-primary btn-lg">Zobacz więcej</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Dodaj Wizytę</h2>
+        <p>
+            Przejrzyj historię przychodni (wizyty i badania)
+        </p>
+        <p><a class="btn btn-default" href="">Historia</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Lekarze</h2>
+        <p>Wyświetl dostępnych lekarzy</p>
+        <p><a class="btn btn-default" href="">Lekarze</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Badania</h2>
+        <p>Wyświetl dostępne badania</p>
+        @Html.ActionLink("Dodaj nowe Wizyty lekarskie", "DodajWizytaLekarz")
     </div>
 </div>
 

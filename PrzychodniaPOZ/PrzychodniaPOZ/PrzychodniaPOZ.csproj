@@ -189,6 +189,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -199,6 +200,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -249,6 +251,13 @@
     <Content Include="Views\Wizyta\DostepneBadania.cshtml" />
     <Content Include="Views\Admin\Logowanie.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Wizyta\Edit.cshtml" />
+    <Content Include="Views\Shared\_PartialAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\DodajWizytaLekarz.cshtml" />
+    <Content Include="Views\Shared\_DodajWizytaLekarzPartial.cshtml" />
+    <Content Include="Views\Admin\_SpecjalizacjaMenu.cshtml" />
+    <Content Include="Views\Admin\SpecjalizacjaMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
