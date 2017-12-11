@@ -13,22 +13,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Lekarz.Nazwisko)
+            Lekarz
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Specjalizacja.Nazwa)
+            Specjalizacja
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PacjenId)
+            Pacjent
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataWizyty)
+            Data wizyty
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GodzinaWizyty)
+            Godzina wizyty
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            Status
         </th>
         <th></th>
     </tr>
@@ -37,12 +37,15 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Lekarz.Nazwisko)
+            @Html.DisplayFor(modelItem => item.Lekarz.Imie)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Specjalizacja.Nazwa)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PacjenId)
+            @Html.DisplayFor(modelItem => item.Pacjent.Nazwisko)
+            @Html.DisplayFor(modelItem => item.Pacjent.Imie)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataWizyty)

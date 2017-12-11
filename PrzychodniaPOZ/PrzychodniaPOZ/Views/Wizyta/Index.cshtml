@@ -8,10 +8,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-2">
-        <label class="label-success">@ViewBag.SuccessMessage</label>
-    </div>
-</div>
 
+<div class="jumbotron">
+    <h1>Przychodnia POZ</h1>
+    <h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>
+    <p class="lead">Witamy na stronie przychodni POZ</p>
+    <p><a href="" class="btn btn-primary btn-lg">Zobacz więcej</a></p>
+</div>
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>Historia przychodni</h2>
+        <p>
+            Przejrzyj historię przychodni (wizyty i badania)
+        </p>
+        <p><a class="btn btn-default" href="">Historia</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Lekarze</h2>
+        <p>Wyświetl dostępnych lekarzy</p>
+        <p><a class="btn btn-default" href="">Lekarze</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Wyzyty do lekarza</h2>
+        <p>Wyświetl dostępnych lekarzy</p>
+        <p><a class="btn btn-default" href="@Url.Action("DostepneWizytaLekarz", "Wizyta")">Dostępne wizyty</a></p>
+    </div>
+    
+</div>

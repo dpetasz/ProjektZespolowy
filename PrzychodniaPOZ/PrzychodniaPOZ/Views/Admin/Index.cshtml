@@ -26,9 +26,9 @@ else
     <div class="col-md-4">
         <h2>Dodaj Wizytę</h2>
         <p>
-            Przejrzyj historię przychodni (wizyty i badania)
+            Dodaj Wizytę do lekarz
         </p>
-        <p><a class="btn btn-default" href="">Historia</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("SpecjalizacjaMenu", "Admin")">Dodaj</a></p>
     </div>
     <div class="col-md-4">
         <h2>Lekarze</h2>
@@ -37,8 +37,8 @@ else
     </div>
     <div class="col-md-4">
         <h2>Badania</h2>
-        <p>Wyświetl dostępne badania</p>
-        @Html.ActionLink("Dodaj nowe Wizyty lekarskie", "SpecjalizacjaMenu")
+        
+        @Html.ActionLink("Wyświetl dostępne badania", "DostepneWizytaLekarz")
     </div>
 </div>
 
