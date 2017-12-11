@@ -32,13 +32,13 @@ else
     </div>
     <div class="col-md-4">
         <h2>Lekarze</h2>
-        <p>Wyświetl dostępnych lekarzy</p>
-        <p><a class="btn btn-default" href="">Lekarze</a></p>
+        <p>Wyświetl dostępne wizyty do lekarzy</p>
+        <p><a  href="@Url.Action("SpecjalizacjaMenu", "Admin")">Wizyty lekarz</a></p>
     </div>
     <div class="col-md-4">
         <h2>Badania</h2>
         <p>Wyświetl dostępne badania</p>
-        @Html.ActionLink("Dodaj nowe Wizyty lekarskie", "DodajWizytaLekarz")
+        @Html.ActionLink("Dodaj nowe Wizyty lekarskie", "SpecjalizacjaMenu")
     </div>
 </div>
 

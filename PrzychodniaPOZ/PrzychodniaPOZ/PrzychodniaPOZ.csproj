@@ -166,6 +166,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WizytaController.cs" />
+    <Compile Include="Controllers\WizytaLekarzsController.cs" />
     <Compile Include="DAL\PrzychodniaContext.cs" />
     <Compile Include="DAL\PrzychodniaInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -258,6 +259,13 @@
     <Content Include="Views\Shared\_DodajWizytaLekarzPartial.cshtml" />
     <Content Include="Views\Admin\_SpecjalizacjaMenu.cshtml" />
     <Content Include="Views\Admin\SpecjalizacjaMenu.cshtml" />
+    <Content Include="Views\WizytaLekarzs\Create.cshtml" />
+    <Content Include="Views\WizytaLekarzs\Delete.cshtml" />
+    <Content Include="Views\WizytaLekarzs\Details.cshtml" />
+    <Content Include="Views\WizytaLekarzs\Edit.cshtml" />
+    <Content Include="Views\WizytaLekarzs\Index.cshtml" />
+    <Content Include="Views\Admin\DostepneWizytaLekarz.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
