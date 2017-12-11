@@ -1,0 +1,31 @@
+﻿@if (Session["PracownikId"] == null)
+{
+    <div class="navbar-collapse collapse">
+        
+        <ul class="nav navbar-nav navbar-right">
+            
+            <li>@Html.ActionLink("Logowanie", "Logowanie", "Admin")</li>
+        </ul>
+    </div>
+}
+else
+{
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+           
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a>@Session["Name"].ToString()</a>
+            </li>
+            <li><a href="@Url.Action("Wyloguj","Admin")">Wyloguj</a></li>
+        </ul>
+    </div>
+}
+

@@ -1,0 +1,97 @@
+﻿@model PrzychodniaPOZ.Models.WizytaLekarz
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Dodaj wizytę do lekarza</h2>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Session["idspec"].ToString()</h4>
+        <hr />
+
+        
+        <div class="form-group">
+            
+                  
+            <div class="col-md-10">
+                <label class="control-label col-md-2">
+                    Lekarz
+                </label>
+                @Html.DropDownList("LekarzId", null, htmlAttributes: new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+           
+            <div class="col-md-10">
+                <label class="control-label col-md-2">
+                    Data wizyty
+                </label>
+                @Html.EditorFor(model => model.DataWizyty, new { htmlAttributes = new { @class = "datepicker" } })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                <label class="control-label col-md-2">
+                    Godzina Wizyty
+                </label>
+                @Html.EditorFor(model => model.GodzinaWizyty, new { htmlAttributes = new { @class = "timepicker" } })
+                
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+@section scripts{
+
+    
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script>
+
+        $(function () {
+            $(".datepicker").datetimepicker({
+                timepicker: false,
+                format: "d-M-y",
+                minDate: new Date(),
+                showMeridian: true,
+                autoclose: true,
+                todayBtn: true,
+                lang: "pl",
+
+            });
+        });
+        $(function () {
+            $(".timepicker").datetimepicker({
+                datepicker: false,
+                format: "H:i",
+                step: 30
+            });
+        });
+    </script>
+}

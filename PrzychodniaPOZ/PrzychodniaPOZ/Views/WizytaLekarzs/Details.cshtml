@@ -1,0 +1,67 @@
+﻿@model PrzychodniaPOZ.Models.WizytaLekarz
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WizytaLekarz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lekarz.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lekarz.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specjalizacja.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specjalizacja.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PacjenId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PacjenId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataWizyty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataWizyty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GodzinaWizyty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GodzinaWizyty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WizytaLekarzId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
