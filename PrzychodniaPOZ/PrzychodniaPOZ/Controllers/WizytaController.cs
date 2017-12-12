@@ -33,7 +33,7 @@ namespace PrzychodniaPOZ.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int? id)
+        public ActionResult ZapiszWizytaLekarz(int? id)
         {
             if (id == null)
             {
@@ -60,7 +60,7 @@ namespace PrzychodniaPOZ.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(WizytaLekarz wizytaLekarz)
+        public ActionResult ZapiszWizytaLekarz(WizytaLekarz wizytaLekarz)
         {
             if (ModelState.IsValid)
             {
@@ -76,27 +76,69 @@ namespace PrzychodniaPOZ.Controllers
 
                 db.Entry(wizytaLekarz).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DostepneWizytaLekarz");
             }
             ViewBag.LekarzId = new SelectList(db.Lekarz, "LekarzId", "Nazwisko", wizytaLekarz.LekarzId);
             ViewBag.SpecjalizacjaId = new SelectList(db.Specjalizacja, "SpecjalizacjaId", "Nazwa", wizytaLekarz.SpecjalizacjaId);
             return View(wizytaLekarz);
         }
 
+        [HttpGet]
+        public ActionResult UsunWizytaLekarz(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            WizytaLekarz wizytaLekarz = db.WizytaLekarz.Find(id);
+            if (wizytaLekarz == null)
+            {
+                return HttpNotFound();
+            }
+
+            Session["LekarzId"] = wizytaLekarz.LekarzId;
+            Session["WizytaLekarzId"] = wizytaLekarz.WizytaLekarzId;
+            Session["SpecjalizacjaId"] = wizytaLekarz.SpecjalizacjaId;
+            Session["DataWizyty"] = wizytaLekarz.DataWizyty;
+            Session["GodzinaWizyty"] = wizytaLekarz.GodzinaWizyty;
+
+
+            ViewBag.LekarzId = new SelectList(db.Lekarz, "LekarzId", "Nazwisko", wizytaLekarz.LekarzId);
+            ViewBag.SpecjalizacjaId = new SelectList(db.Specjalizacja, "SpecjalizacjaId", "Nazwa", wizytaLekarz.SpecjalizacjaId);
+            return View(wizytaLekarz);
+        }
+
+        [HttpPost]
+        public ActionResult UsunWizytaLekarz(WizytaLekarz wizytaLekarz)
+        {
+            if (ModelState.IsValid)
+            {
+                wizytaLekarz.LekarzId = (int)Session["LekarzId"];
+                wizytaLekarz.SpecjalizacjaId = (int)Session["SpecjalizacjaId"];
+                wizytaLekarz.PacjenId = null;
+                wizytaLekarz.GodzinaWizyty = (TimeSpan)Session["GodzinaWizyty"];
+                wizytaLekarz.DataWizyty = (DateTime)Session["DataWizyty"];
+
+
+                wizytaLekarz.Status = false;
+
+
+                db.Entry(wizytaLekarz).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("HistoriaWizytaLekarz");
+            }
+            ViewBag.LekarzId = new SelectList(db.Lekarz, "LekarzId", "Nazwisko", wizytaLekarz.LekarzId);
+            ViewBag.SpecjalizacjaId = new SelectList(db.Specjalizacja, "SpecjalizacjaId", "Nazwa", wizytaLekarz.SpecjalizacjaId);
+            return View(wizytaLekarz);
+        }
         public ActionResult DostepneBadania()
         {
             return Json(new { foo = "bar", baz = "Blech" });
         }
 
-        public ActionResult ZapiszWizytaLekarz()
-        {
-            return View();
-        }
-
-        public ActionResult UsunWizytaLekarz()
-        {
-            return View();
-        }
+       
+        
 
         public ActionResult ZapiszBadanie()
         {
@@ -115,7 +157,11 @@ namespace PrzychodniaPOZ.Controllers
 
         public ActionResult HistoriaWizytaLekarz()
         {
-            return Json(new { foo = "bar", baz = "Blech" });
+            int id = (Int32)Session["PacjentId"];
+            var wizytaLekarz = (from wl in db.WizytaLekarz
+                                where wl.PacjenId == id
+                                select wl).ToList();
+            return View(wizytaLekarz);
         }
 
         public ActionResult HistoriaBadanie()

@@ -27,9 +27,7 @@
         <th>
             Godzina
         </th>
-        <th>
-            
-        </th>
+        
         
         <th></th>
     </tr>
@@ -52,11 +50,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.GodzinaWizyty)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Zapisz się na wizytę", "Edit", new { id = item.WizytaLekarzId })
+                @Html.ActionLink("Zapisz się na wizytę", "ZapiszWizytaLekarz", new { id = item.WizytaLekarzId })
                
             </td>
         </tr>

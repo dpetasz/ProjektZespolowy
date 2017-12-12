@@ -252,7 +252,7 @@
     <Content Include="Views\Wizyta\DostepneBadania.cshtml" />
     <Content Include="Views\Admin\Logowanie.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Wizyta\Edit.cshtml" />
+    <Content Include="Views\Wizyta\ZapiszWizytaLekarz.cshtml" />
     <Content Include="Views\Shared\_PartialAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\DodajWizytaLekarz.cshtml" />
@@ -266,6 +266,8 @@
     <Content Include="Views\WizytaLekarzs\Index.cshtml" />
     <Content Include="Views\Admin\DostepneWizytaLekarz.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Wizyta\HistoriaWizytaLekarz.cshtml" />
+    <Content Include="Views\Wizyta\UsunWizytaLekarz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
