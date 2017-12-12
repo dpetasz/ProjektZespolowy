@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PrzychodniaPOZ.Models.Badanie>
+
+@{
+    ViewBag.Title = "BadaniaMenu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>BadaniaMenu</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("DostepneWizytaBadanie", new { idBadanie = item.BadanieId })">@item.Nazwa </a>
+
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+
+

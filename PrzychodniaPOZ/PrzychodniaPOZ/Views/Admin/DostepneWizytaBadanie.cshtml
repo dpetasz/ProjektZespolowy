@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PrzychodniaPOZ.Models.WizytaBadanie>
+
+@{
+    ViewBag.Title = "DostepneWizytaBadanie";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DostepneWizytaBadanie</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Badanie.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pacjent.PacjentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataBadanie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GodzinaBadanie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Badanie.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pacjent.PacjentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataBadanie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GodzinaBadanie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.WizytaBadanieId })
+        </td>
+    </tr>
+}
+
+</table>

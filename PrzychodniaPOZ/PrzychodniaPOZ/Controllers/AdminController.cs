@@ -64,7 +64,60 @@ namespace PrzychodniaPOZ.Controllers
             return View(specjalizacja);
         }
 
-        
+        public ActionResult BadaniaMenu()
+        {
+            var badania = db.Badanie.ToList();
+
+            return View(badania);
+        }
+
+        public ActionResult DostepneWizytaBadaniaMenu()
+        {
+            var badania = db.Badanie.ToList();
+
+            return View(badania);
+        }
+
+        [HttpGet]
+        public ActionResult DodajWizytaBadanie(int? idBadanie)
+        {
+
+            
+
+            Session["idBad"] = idBadanie;
+            
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult DodajWizytaBadanie([Bind(Include = "WizytaBadanieId,BadanieId,PacjenId,DataBadanie,GodzinaBadanie,Status")] WizytaBadanie wizytaBadanie)
+        {
+            if (ModelState.IsValid)
+            {
+                wizytaBadanie.PacjentId = null;
+                wizytaBadanie.BadanieId = (Int32)Session["idBad"];
+                wizytaBadanie.Status = false;
+                db.WizytaBadanie.Add(wizytaBadanie);
+                db.SaveChanges();
+                return RedirectToAction("DostepneWizytaBadanie");
+            }
+
+            return View(wizytaBadanie);
+        }
+        [ChildActionOnly]
+        public ActionResult DostepneWizytaBadanie(int? idBadanie)
+        {
+            if (idBadanie == null)
+            {
+                return HttpNotFound();
+            }
+            //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
+            var wizytaBadanie = (from wb in db.WizytaBadanie
+                                 where wb.BadanieId == idBadanie
+                                select wb).ToList();
+            return PartialView("_DostepneWizytaBadanie",wizytaBadanie);
+        }
 
         // GET: WizytaLekarz/DodajWizytaLekarz
         [HttpGet]

@@ -257,7 +257,6 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\DodajWizytaLekarz.cshtml" />
     <Content Include="Views\Shared\_DodajWizytaLekarzPartial.cshtml" />
-    <Content Include="Views\Admin\_SpecjalizacjaMenu.cshtml" />
     <Content Include="Views\Admin\SpecjalizacjaMenu.cshtml" />
     <Content Include="Views\WizytaLekarzs\Create.cshtml" />
     <Content Include="Views\WizytaLekarzs\Delete.cshtml" />
@@ -268,6 +267,11 @@
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Wizyta\HistoriaWizytaLekarz.cshtml" />
     <Content Include="Views\Wizyta\UsunWizytaLekarz.cshtml" />
+    <Content Include="Views\Admin\BadaniaMenu.cshtml" />
+    <Content Include="Views\Admin\DodajWizytaBadanie.cshtml" />
+    <Content Include="Views\Admin\DostepneWizytaBadanie.cshtml" />
+    <Content Include="Views\Shared\_DostepneWizytaBadanie.cshtml" />
+    <Content Include="Views\Admin\DostepneWizytaBadaniaMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
