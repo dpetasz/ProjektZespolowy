@@ -1,0 +1,19 @@
+﻿@model IEnumerable<PrzychodniaPOZ.Models.WizytaBadanie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Dostępne badania</h2>
+@foreach (var badanie in Model)
+{
+    <div>
+        @badanie.Badanie.Nazwa
+        <br />
+        @badanie.DataBadanie
+        <br />
+        @badanie.GodzinaBadanie
+    </div>
+}
+

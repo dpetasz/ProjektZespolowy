@@ -18,10 +18,10 @@
         <h4>@Session["idspec"].ToString()</h4>
         <hr />
 
-        
+
         <div class="form-group">
-            
-                  
+
+
             <div class="col-md-10">
                 <label class="control-label col-md-2">
                     Lekarz
@@ -32,24 +32,24 @@
         </div>
 
         <div class="form-group">
-           
+
             <div class="col-md-10">
                 <label class="control-label col-md-2">
                     Data wizyty
                 </label>
                 @Html.EditorFor(model => model.DataWizyty, new { htmlAttributes = new { @class = "datepicker" } })
-                
+
             </div>
         </div>
 
         <div class="form-group">
-            
+
             <div class="col-md-10">
                 <label class="control-label col-md-2">
                     Godzina Wizyty
                 </label>
                 @Html.EditorFor(model => model.GodzinaWizyty, new { htmlAttributes = new { @class = "timepicker" } })
-                
+
             </div>
         </div>
 
@@ -67,22 +67,21 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
 <link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
 @section scripts{
 
-    
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script src="~/Scripts/jquery.datetimepicker.js"></script>
     <script>
 
         $(function () {
-            $(".datepicker").datetimepicker({
-                timepicker: false,
-                format: "d-M-y",
+            $(".datepicker").datepicker({
+                dateFormat: 'dd-MM-yy',
                 minDate: new Date(),
+                value: new Date(),
                 showMeridian: true,
                 autoclose: true,
-                todayBtn: true,
-                lang: "pl",
 
             });
         });
@@ -90,6 +89,7 @@
             $(".timepicker").datetimepicker({
                 datepicker: false,
                 format: "H:i",
+                showSecond: false,
                 step: 30
             });
         });

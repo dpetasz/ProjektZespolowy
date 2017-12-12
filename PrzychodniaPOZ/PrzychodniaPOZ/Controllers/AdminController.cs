@@ -64,14 +64,14 @@ namespace PrzychodniaPOZ.Controllers
             return View(specjalizacja);
         }
 
-        public ActionResult BadaniaMenu()
+        public ActionResult BadaniaMenu(int? id)
         {
             var badania = db.Badanie.ToList();
 
             return View(badania);
         }
 
-        public ActionResult DostepneWizytaBadaniaMenu()
+        public ActionResult DostepneWizytaBadaniaMenu(int? id)
         {
             var badania = db.Badanie.ToList();
 
@@ -105,7 +105,7 @@ namespace PrzychodniaPOZ.Controllers
 
             return View(wizytaBadanie);
         }
-        [ChildActionOnly]
+        
         public ActionResult DostepneWizytaBadanie(int? idBadanie)
         {
             if (idBadanie == null)
@@ -116,7 +116,7 @@ namespace PrzychodniaPOZ.Controllers
             var wizytaBadanie = (from wb in db.WizytaBadanie
                                  where wb.BadanieId == idBadanie
                                 select wb).ToList();
-            return PartialView("_DostepneWizytaBadanie",wizytaBadanie);
+            return View(wizytaBadanie);
         }
 
         // GET: WizytaLekarz/DodajWizytaLekarz

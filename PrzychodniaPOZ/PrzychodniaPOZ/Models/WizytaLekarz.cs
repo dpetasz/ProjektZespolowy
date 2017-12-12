@@ -13,12 +13,12 @@ namespace PrzychodniaPOZ.Models
         public int SpecjalizacjaId { get; set; }
         public Nullable<int> PacjenId { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:D}", ApplyFormatInEditMode = true)]
         public System.DateTime DataWizyty { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:g}")]
-        [DataType(DataType.Time)]
+        //[DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:g}")]        
         public System.TimeSpan GodzinaWizyty { get; set; }
         public Nullable<bool> Status { get; set; }
 

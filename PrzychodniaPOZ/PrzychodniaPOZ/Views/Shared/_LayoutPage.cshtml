@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <td>@{Html.RenderAction("_BadaniaLista", "Lista");}</td>
+            <td>@RenderBody()</td>
+        </tr>
+    </table>
+   
+</body>
+</html>

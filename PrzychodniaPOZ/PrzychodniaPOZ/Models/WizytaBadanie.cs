@@ -12,7 +12,7 @@ namespace PrzychodniaPOZ.Models
         public int BadanieId { get; set; }
         public Nullable<int> PacjentId { get; set; }
 
-        [DataType(DataType.Date)]
+       // [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:D}", ApplyFormatInEditMode = true)]
         public System.DateTime DataBadanie { get; set; }
 
