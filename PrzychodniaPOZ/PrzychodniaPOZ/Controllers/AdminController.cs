@@ -59,23 +59,33 @@ namespace PrzychodniaPOZ.Controllers
         
         public ActionResult SpecjalizacjaMenu()
         {
+            
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult BadaniaMenu()
+        {
+            var badania = db.Badanie.ToList();
+            return PartialView("_BadaniaMenu", badania);
+        }
+
+        public ActionResult DostepneWizytaBadaniaMenu()
+        {
+            var badania = db.Badanie.ToList();
+
+            return View(badania);
+        }
+        public ActionResult _BadaniaLista()
+        {
+            var badania = db.Badanie.ToList();
+            return PartialView("_BadaniaLista", badania);
+        }
+
+        public ActionResult _WizytaLekarzLista()
+        {
             var specjalizacja = db.Specjalizacja.ToList();
-
-            return View(specjalizacja);
-        }
-
-        public ActionResult BadaniaMenu(int? id)
-        {
-            var badania = db.Badanie.ToList();
-
-            return View(badania);
-        }
-
-        public ActionResult DostepneWizytaBadaniaMenu(int? id)
-        {
-            var badania = db.Badanie.ToList();
-
-            return View(badania);
+            return PartialView("_WizytaLekarzLista", specjalizacja);
         }
 
         [HttpGet]
@@ -121,15 +131,15 @@ namespace PrzychodniaPOZ.Controllers
 
         // GET: WizytaLekarz/DodajWizytaLekarz
         [HttpGet]
-        public ActionResult DodajWizytaLekarz(string id)
+        public ActionResult DodajWizytaLekarz(int? id)
         {
             
-            int idSpec = Convert.ToInt32(id);
             
-            Session["idspec"] = idSpec;
+            
+            Session["idspec"] = id;
             var lekarzWidok = (from l in db.Lekarz
                                join ls in db.LekSpec on l.LekarzId equals ls.LekarzId
-                               where ls.SpecjalizacjaId == idSpec
+                               where ls.SpecjalizacjaId == id
                                select l).ToList();
             SelectList lista = new SelectList (lekarzWidok , "LekarzId", "Nazwisko");
 

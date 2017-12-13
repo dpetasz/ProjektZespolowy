@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<PrzychodniaPOZ.Models.WizytaBadanie>
-
-
 @{
     ViewBag.Title = "WyswietlBadanie";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutDostepneWizytaBadanie.cshtml";
 }
 
 <h2>WyswietlBadanie</h2>
 
 <div>
-    <ul>tt
+    <ul>
         @foreach (var wizyty in Model)
         {
             <li>

@@ -1,24 +1,8 @@
-﻿@model IEnumerable<PrzychodniaPOZ.Models.Specjalizacja>
-
+﻿
 @{
     ViewBag.Title = "SpecjalizacjaMenu";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutDostepneWizytaLekarz.cshtml";
 }
 
 <h2>SpecjalizacjaMenu</h2>
 
-
-
-
-<nav class="list-group">
-    <ul>
-        @foreach (var spec in Model)
-        {
-            <li>
-                <a href="@Url.Action("DodajWizytaLekarz", "Admin", new {id = spec.SpecjalizacjaId.ToString() })">@spec.Nazwa </a>
-                
-
-            </li>
-        }
-    </ul>
-</nav>

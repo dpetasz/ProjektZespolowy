@@ -12,12 +12,12 @@ namespace PrzychodniaPOZ.Controllers
     {
         PrzychodniaContext db = new PrzychodniaContext();
         // GET: Lista
+        
         public ActionResult Index()
         {
-            var dostepneBadania = db.WizytaBadanie.OrderByDescending(b => b.BadanieId).ToList();
-            return View(dostepneBadania);
+            
+            return View();
         }
-
         public ActionResult _BadaniaLista()
         {
             var badania = db.Badanie.ToList();
@@ -46,6 +46,18 @@ namespace PrzychodniaPOZ.Controllers
                              where b.BadanieId == id 
                              select wb).ToList();
             return View(wynik);
+        }
+        public ActionResult DostepneWizytaBadanie(int? idBadanie)
+        {
+            if (idBadanie == null)
+            {
+                return HttpNotFound();
+            }
+            //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
+            var wizytaBadanie = (from wb in db.WizytaBadanie
+                                 where wb.BadanieId == idBadanie
+                                 select wb).ToList();
+            return View(wizytaBadanie);
         }
     }
 }
