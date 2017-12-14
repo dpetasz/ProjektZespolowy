@@ -159,14 +159,12 @@ namespace PrzychodniaPOZ.Controllers
         [HttpGet]
         public ActionResult DodajWizytaLekarz(int? id)
         {
-
-
-
             Session["idspec"] = id;
             var lekarzWidok = (from l in db.Lekarz
                                join ls in db.LekSpec on l.LekarzId equals ls.LekarzId
                                where ls.SpecjalizacjaId == id
-                               select l).ToList();
+                               select l
+                               ).ToList();
             SelectList lista = new SelectList(lekarzWidok, "LekarzId", "Nazwisko");
 
             //ViewBag.LekarzListaNazwisko = lista;
@@ -202,6 +200,7 @@ namespace PrzychodniaPOZ.Controllers
             //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
             var wizytaLekarz = (from wl in db.WizytaLekarz
                                 where wl.SpecjalizacjaId == id
+                                orderby wl.DataWizyty
                                 select wl).ToList();
             return View(wizytaLekarz);
         }

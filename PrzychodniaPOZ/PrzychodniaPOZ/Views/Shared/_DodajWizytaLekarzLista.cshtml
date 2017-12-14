@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<PrzychodniaPOZ.Models.Specjalizacja>
 
 
-<h2>Specjalizacja</h2>
-
-
+<h4>Wybierz specjalizacje</h4>
 
 
 <nav class="list-group">
@@ -12,8 +10,6 @@
         {
             <li>
                 <a href="@Url.Action("DodajWizytaLekarz", "Admin", new {id = spec.SpecjalizacjaId})">@spec.Nazwa </a>
-
-
             </li>
         }
     </ul>
