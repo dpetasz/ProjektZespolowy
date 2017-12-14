@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "DodajWizytaBadanie";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutDodajWizytaBadanie.cshtml";
 }
 
 <h2>DodajWizytaBadanie</h2>
@@ -17,37 +17,45 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
 
-       
+        <div class="form-group">
+
+            <div class="col-md-10">
+                <label class="control-label col-md-2">
+                    Rodzaj badania
+                </label>
+               @Session["idBad"].ToString()
+            </div>
+        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataBadanie, htmlAttributes: new { @class = "control-label col-md-2" })
+           
             <div class="col-md-10">
+                <label class="control-label col-md-2">
+                    Data Badania
+                </label>
+
                 @Html.EditorFor(model => model.DataBadanie, new { htmlAttributes = new { @class = "datepicker" } })
-                @Html.ValidationMessageFor(model => model.DataBadanie, "", new { @class = "text-danger" })
+                
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GodzinaBadanie, htmlAttributes: new { @class = "control-label col-md-2" })
+            
+            
             <div class="col-md-10">
+                <label class="control-label col-md-2">
+                    Godzina Badania
+                </label>
                 @Html.EditorFor(model => model.GodzinaBadanie, new { htmlAttributes = new { @class = "timepicker" } })
-                @Html.ValidationMessageFor(model => model.GodzinaBadanie, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Status)
-                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
+        
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Zapisz" class="btn btn-default" />
             </div>
         </div>
     </div>

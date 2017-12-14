@@ -44,7 +44,7 @@ namespace PrzychodniaPOZ.Controllers
         }
 
 
-        
+
 
         public ActionResult Wyloguj()
         {
@@ -53,14 +53,43 @@ namespace PrzychodniaPOZ.Controllers
             return RedirectToAction("Logowanie", "Admin");
         }
 
-        
 
-
-        
-        public ActionResult SpecjalizacjaMenu()
+        //Wyswietla listę specjalizacji w layoutdostepnewizlekarz
+        public ActionResult ListaWizytaLekarzMenu()
         {
-            
+
             return View();
+        }
+
+        public ActionResult SpecjalizacjaLista()
+        {
+            var specjalizacja = db.Specjalizacja.ToList();
+            return PartialView("_DostepneWizLekSpecjalizacjaLista", specjalizacja);
+        }
+
+        public ActionResult DostepneWizytyLekarzLista(int? id)
+        {
+            return View();
+        }
+        //
+
+
+        public ActionResult DodajWizytaLekarzMenu()
+        {
+
+            return View();
+        }
+
+        public ActionResult DodajWizytaBadanieMenu()
+        {
+
+            return View();
+        }
+
+        public ActionResult DodajWizytaBadaniaListaMenu()
+        {
+            var badania = db.Badanie.ToList();
+            return PartialView("_DodajWizytaBadaniaListaMenu", badania);
         }
 
         [ChildActionOnly]
@@ -70,11 +99,10 @@ namespace PrzychodniaPOZ.Controllers
             return PartialView("_BadaniaMenu", badania);
         }
 
+        //Widok dla dostępnych wizyt na badania z layautDostepneWizytaBadanie
         public ActionResult DostepneWizytaBadaniaMenu()
         {
-            var badania = db.Badanie.ToList();
-
-            return View(badania);
+            return View();
         }
         public ActionResult _BadaniaLista()
         {
@@ -85,23 +113,21 @@ namespace PrzychodniaPOZ.Controllers
         public ActionResult _WizytaLekarzLista()
         {
             var specjalizacja = db.Specjalizacja.ToList();
-            return PartialView("_WizytaLekarzLista", specjalizacja);
+            return PartialView("_DodajWizytaLekarzLista", specjalizacja);
         }
 
         [HttpGet]
         public ActionResult DodajWizytaBadanie(int? idBadanie)
         {
 
-            
-
             Session["idBad"] = idBadanie;
-            
+
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
 
-        public ActionResult DodajWizytaBadanie([Bind(Include = "WizytaBadanieId,BadanieId,PacjenId,DataBadanie,GodzinaBadanie,Status")] WizytaBadanie wizytaBadanie)
+
+        [HttpPost]
+        public ActionResult DodajWizytaBadanie(WizytaBadanie wizytaBadanie)
         {
             if (ModelState.IsValid)
             {
@@ -110,12 +136,12 @@ namespace PrzychodniaPOZ.Controllers
                 wizytaBadanie.Status = false;
                 db.WizytaBadanie.Add(wizytaBadanie);
                 db.SaveChanges();
-                return RedirectToAction("DostepneWizytaBadanie");
+                return RedirectToAction("DostepneWizytaBadaniaMenu");
             }
 
             return View(wizytaBadanie);
         }
-        
+
         public ActionResult DostepneWizytaBadanie(int? idBadanie)
         {
             if (idBadanie == null)
@@ -125,7 +151,7 @@ namespace PrzychodniaPOZ.Controllers
             //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
             var wizytaBadanie = (from wb in db.WizytaBadanie
                                  where wb.BadanieId == idBadanie
-                                select wb).ToList();
+                                 select wb).ToList();
             return View(wizytaBadanie);
         }
 
@@ -133,15 +159,15 @@ namespace PrzychodniaPOZ.Controllers
         [HttpGet]
         public ActionResult DodajWizytaLekarz(int? id)
         {
-            
-            
-            
+
+
+
             Session["idspec"] = id;
             var lekarzWidok = (from l in db.Lekarz
                                join ls in db.LekSpec on l.LekarzId equals ls.LekarzId
                                where ls.SpecjalizacjaId == id
                                select l).ToList();
-            SelectList lista = new SelectList (lekarzWidok , "LekarzId", "Nazwisko");
+            SelectList lista = new SelectList(lekarzWidok, "LekarzId", "Nazwisko");
 
             //ViewBag.LekarzListaNazwisko = lista;
 
@@ -171,10 +197,11 @@ namespace PrzychodniaPOZ.Controllers
             ViewBag.SpecjalizacjaId = new SelectList(db.Specjalizacja, "SpecjalizacjaId", "Nazwa", wizytaLekarz.SpecjalizacjaId);
             return View(wizytaLekarz);
         }
-        public ActionResult DostepneWizytaLekarz()
+        public ActionResult DostepneWizytaLekarz(int? id)
         {
             //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
             var wizytaLekarz = (from wl in db.WizytaLekarz
+                                where wl.SpecjalizacjaId == id
                                 select wl).ToList();
             return View(wizytaLekarz);
         }
