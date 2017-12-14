@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Badanie.Nazwa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pacjent.PacjentId)
+            @Html.DisplayNameFor(model => model.PacjentId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataBadanie)
@@ -36,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.Badanie.Nazwa)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pacjent.PacjentId)
+            @Html.DisplayFor(modelItem => item.PacjentId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataBadanie)
@@ -50,7 +50,7 @@
         <td>
             
             
-            @Html.ActionLink("Delete", "Delete", new { id=item.WizytaBadanieId })
+            @Html.ActionLink("Delete", "DeleteBadanie", new { id=item.WizytaBadanieId })
         </td>
     </tr>
 }

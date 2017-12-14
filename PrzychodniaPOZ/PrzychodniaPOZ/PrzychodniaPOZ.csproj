@@ -337,6 +337,7 @@
     <Content Include="Views\Shared\_DodajWizytaBadaniaListaMenu.cshtml" />
     <Content Include="Views\Admin\DodajWizytaBadanieMenu.cshtml" />
     <Content Include="Views\Shared\_DodajWizytaBadanie.cshtml" />
+    <Content Include="Views\Admin\DeleteBadanie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

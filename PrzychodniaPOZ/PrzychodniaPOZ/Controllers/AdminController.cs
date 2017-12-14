@@ -17,6 +17,7 @@ namespace PrzychodniaPOZ.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult Logowanie()
         {
@@ -42,10 +43,7 @@ namespace PrzychodniaPOZ.Controllers
                 }
             }
         }
-
-
-
-
+        
         public ActionResult Wyloguj()
         {
             int user = (int)Session["PracownikID"];
@@ -60,7 +58,7 @@ namespace PrzychodniaPOZ.Controllers
 
             return View();
         }
-
+        [ChildActionOnly]
         public ActionResult SpecjalizacjaLista()
         {
             var specjalizacja = db.Specjalizacja.ToList();
@@ -76,16 +74,14 @@ namespace PrzychodniaPOZ.Controllers
 
         public ActionResult DodajWizytaLekarzMenu()
         {
-
             return View();
         }
 
         public ActionResult DodajWizytaBadanieMenu()
         {
-
             return View();
         }
-
+        [ChildActionOnly]
         public ActionResult DodajWizytaBadaniaListaMenu()
         {
             var badania = db.Badanie.ToList();
@@ -104,12 +100,13 @@ namespace PrzychodniaPOZ.Controllers
         {
             return View();
         }
+        [ChildActionOnly]
         public ActionResult _BadaniaLista()
         {
             var badania = db.Badanie.ToList();
             return PartialView("_BadaniaLista", badania);
         }
-
+        [ChildActionOnly]
         public ActionResult _WizytaLekarzLista()
         {
             var specjalizacja = db.Specjalizacja.ToList();
@@ -174,9 +171,7 @@ namespace PrzychodniaPOZ.Controllers
             return View();
         }
 
-        // POST: WizytaLekarz/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DodajWizytaLekarz([Bind(Include = "WizytaLekarzId,LekarzId,SpecjalizacjaId,PacjenId,DataWizyty,GodzinaWizyty,Status")] WizytaLekarz wizytaLekarz)
@@ -228,6 +223,31 @@ namespace PrzychodniaPOZ.Controllers
             db.WizytaLekarz.Remove(wizytaLekarz);
             db.SaveChanges();
             return RedirectToAction("DostepneWizytaLekarz");
+        }
+
+        public ActionResult DeleteBadanie(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            WizytaBadanie wizytaBadanie = db.WizytaBadanie.Find(id);
+            if (wizytaBadanie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(wizytaBadanie);
+        }
+
+        
+        [HttpPost, ActionName("DeleteBadanie")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteBadanieConfirmed(int id)
+        {
+            WizytaBadanie wizytaBadanie = db.WizytaBadanie.Find(id);
+            db.WizytaBadanie.Remove(wizytaBadanie);
+            db.SaveChanges();
+            return RedirectToAction("DostepneWizytaBadaniaMenu");
         }
 
     }
