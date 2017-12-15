@@ -217,3 +217,4 @@ C:\Users\dpeta\Desktop\PZ_Git\ProjektZespolowy\PrzychodniaPOZ\PrzychodniaPOZ\bin
 C:\Users\dpeta\Desktop\PZ_Git\ProjektZespolowy\PrzychodniaPOZ\PrzychodniaPOZ\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\dpeta\Desktop\PZ_Git\ProjektZespolowy\PrzychodniaPOZ\PrzychodniaPOZ\obj\Debug\PrzychodniaPOZ.dll
 C:\Users\dpeta\Desktop\PZ_Git\ProjektZespolowy\PrzychodniaPOZ\PrzychodniaPOZ\obj\Debug\PrzychodniaPOZ.pdb
+C:\Users\dpeta\Desktop\PZ_Git\ProjektZespolowy\PrzychodniaPOZ\PrzychodniaPOZ\obj\Debug\PrzychodniaPOZ.csprojResolveAssemblyReference.cache

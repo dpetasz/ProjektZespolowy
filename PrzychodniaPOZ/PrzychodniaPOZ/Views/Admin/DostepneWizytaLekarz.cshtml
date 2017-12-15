@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutDostepneWizytaLekarz.cshtml";
 }
 
-<h2>DostepneWizytaLekarz</h2>
+<h2>Dostepne Wizyty do Lekarza</h2>
 
 <p>
     @Html.ActionLink("Dodaj nową wizytę", "DodajWizytaLekarzMenu")
@@ -30,6 +30,7 @@
         <th>
             Status
         </th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -57,11 +58,14 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            
-            
-            @Html.ActionLink("Delete", "Delete", new { id=item.WizytaLekarzId })
+            @Html.ActionLink("Delete", "Delete", new { id = item.WizytaLekarzId })
+        </td>
+        <td>
+            @Html.ActionLink("Dane pacjenta", "DanePacjentaPokazWizytaLekarz", new { id = item.PacjenId })
         </td>
     </tr>
 }
 
 </table>
+
+

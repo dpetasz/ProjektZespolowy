@@ -145,9 +145,11 @@ namespace PrzychodniaPOZ.Controllers
             {
                 return HttpNotFound();
             }
+            Session["IdBadanie"] = idBadanie;
             //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
             var wizytaBadanie = (from wb in db.WizytaBadanie
                                  where wb.BadanieId == idBadanie
+                                 orderby wb.DataBadanie, wb.GodzinaBadanie
                                  select wb).ToList();
             return View(wizytaBadanie);
         }
@@ -160,6 +162,7 @@ namespace PrzychodniaPOZ.Controllers
             var lekarzWidok = (from l in db.Lekarz
                                join ls in db.LekSpec on l.LekarzId equals ls.LekarzId
                                where ls.SpecjalizacjaId == id
+                               orderby l.Nazwisko
                                select l
                                ).ToList();
             SelectList lista = new SelectList(lekarzWidok, "LekarzId", "Nazwisko");
@@ -192,10 +195,11 @@ namespace PrzychodniaPOZ.Controllers
         }
         public ActionResult DostepneWizytaLekarz(int? id)
         {
+            Session["idSpec"] = id;
             //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
             var wizytaLekarz = (from wl in db.WizytaLekarz
                                 where wl.SpecjalizacjaId == id
-                                orderby wl.DataWizyty
+                                orderby wl.DataWizyty, wl.GodzinaWizyty
                                 select wl).ToList();
             return View(wizytaLekarz);
         }
@@ -250,5 +254,32 @@ namespace PrzychodniaPOZ.Controllers
             return RedirectToAction("DostepneWizytaBadaniaMenu");
         }
 
+        public ActionResult DanePacjentaPokazBadania(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("DostepneWizytaBadaniaMenu");
+            }
+            Pacjent pacjent = db.Pacjent.Find(id);
+            if (pacjent == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pacjent);
+        }
+        public ActionResult DanePacjentaPokazWizytaLekarz(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("DostepneWizytaLekarz");
+            }
+            Pacjent pacjent = db.Pacjent.Find(id);
+            if (pacjent == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pacjent);
+        }
+        
     }
 }

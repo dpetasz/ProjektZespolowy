@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutDostepneWizytaBadanie.cshtml";
 }
 
-<h2>DostepneWizytaBadanie</h2>
+<h2>Dostepne wizyty na badania</h2>
 
 <p>
     @Html.ActionLink("Dodaj nowe badanie", "DodajWizytaBadanieMenu")
@@ -28,6 +28,7 @@
             @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,9 +49,10 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            
-            
             @Html.ActionLink("Delete", "DeleteBadanie", new { id=item.WizytaBadanieId })
+        </td>
+        <td>
+            @Html.ActionLink("Dane pacjenta", "DanePacjentaPokazBadania", new { id = item.PacjentId })
         </td>
     </tr>
 }
