@@ -6,13 +6,15 @@
 
 
 
-<nav class="list-group">
-    <ul>
-        @foreach (var spec in Model)
-        {
-            <li>
-                <a href="@Url.Action("DostepneWizytaLekarz", "Admin", new { id = spec.SpecjalizacjaId })">@spec.Nazwa </a>
-            </li>
-        }
-    </ul>
-</nav>
+<table class="table">
+
+    @foreach (var spec in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("DostepneWizytaLekarz", "Admin", new { id = spec.SpecjalizacjaId})">@spec.Nazwa </a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -18,13 +18,22 @@ else
     @Html.AntiForgeryToken()
 
     <div class="navbar-collapse collapse">
+       
         <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Wizyta", "Index", "Wizyta")</li>
+            <li>@Html.ActionLink("Home", "Index", "Wizyta")</li>
+        </ul>
+        <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Dostępni Lekarze", "DostepneWizytaLekarz", "Wizyta")</li>
+        </ul>
+        <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Dostępne Badania", "DostepneWizytaBadanie", "Wizyta")</li>
         </ul>
-
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Moje wizyty", "HistoriaWizytaLekarz", "Wizyta")</li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Moje badania", "HistoriaWizytaBadanie", "Wizyta")</li>
+        </ul>
 
         <ul class="nav navbar-nav navbar-right">
             <li>

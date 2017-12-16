@@ -1,99 +1,73 @@
 ﻿@model PrzychodniaPOZ.Models.Pacjent
-
 @{
     ViewBag.Title = "DanePacjentaPokazBadania";
     Layout = "~/Views/Shared/_LayoutDostepneWizytaBadanie.cshtml";
 }
-
 <h2>Dane Pacjenta (Badania)</h2>
-
 <div>
     <h4>Pacjent</h4>
     <hr />
-    
+    <dl class="dl-horizontal">
         <div class="col-md-10">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Nazwisko)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Nazwisko)
-                </dd>
-                </dl>
-</div>
-        <div class="col-md-10">
-            <dl class="dl-horizontal">
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Imie)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Imie)
-                </dd>
-            </dl>
-</div>
-        <div class="col-md-10">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Adres)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Adres)
-                </dd>
-            </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nazwisko)
+            </dd>
         </div>
         <div class="col-md-10">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Telefon)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Telefon)
-                </dd>
-            </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Imie)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Imie)
+            </dd>
         </div>
         <div class="col-md-10">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
-            </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Adres)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Adres)
+            </dd>
         </div>
         <div class="col-md-10">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Pesel)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Pesel)
-                </dd>
-            </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Telefon)
+            </dd>
         </div>
         <div class="col-md-10">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Login)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Login)
-                </dd>
-            </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </div>
+        <div class="col-md-10">
+            <dt>
+                @Html.DisplayNameFor(model => model.Pesel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Pesel)
+            </dd>
+        </div>
+        <div class="col-md-10">
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
         </div>
         <div class="col-md-10">
             @Html.ActionLink("Cofnij", "DostepneWizytaBadanie", new { idBadanie = Session["IdBadanie"] })
         </div>
-
     </dl>
-
 </div>
+
 
