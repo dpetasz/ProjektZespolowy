@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PrzychodniaPOZ.Models.WizytaLekarz>
+
+@{
+    ViewBag.Title = "LekarzeListaPokaz";
+    Layout = "~/Views/Shared/_LayoutLekarze.cshtml";
+}
+
+<h2>Zapisane wizyty lekarzy</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Lekarz
+        </th>
+        <th>
+            Specjalizacja
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PacjenId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataWizyty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GodzinaWizyty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lekarz.Nazwisko)
+            @Html.DisplayFor(modelItem => item.Lekarz.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Specjalizacja.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PacjenId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataWizyty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GodzinaWizyty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        
+    </tr>
+}
+
+</table>

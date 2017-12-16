@@ -19,7 +19,6 @@ else
 <div class="jumbotron">
     <h1>Przychodnia POZ</h1>
     <p class="lead">Panele Administratora systemu</p>
-    <p><a href="" class="btn btn-primary btn-lg">Zobacz więcej</a></p>
 </div>
 
 <div class="row">
@@ -31,8 +30,7 @@ else
     </div>
     <div class="col-md-4">
         <h2>Lekarze</h2>
-        <p>Wyświetl dostępne wizyty do lekarzy</p>
-        <p><a  href="@Url.Action("SpecjalizacjaMenu", "Admin")">Wizyty lekarz</a></p>
+        <p><a class="btn btn-primary btn-lg" href="@Url.Action("DostepniLekarzeLista", "Admin")">Dostepni lekarze</a></p>
     </div>
     <div class="col-md-4">
         <h2>Badania</h2>

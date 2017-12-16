@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PrzychodniaPOZ.Models.Lekarz>
+
+
+
+<h3>Lista lekarzy</h3>
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("LekarzeListaPokaz", new { id = item.LekarzId })">@item.Nazwisko @item.Imie</a>
+            </td>
+        </tr>
+    }
+</table>

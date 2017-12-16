@@ -95,6 +95,34 @@ namespace PrzychodniaPOZ.Controllers
             return PartialView("_BadaniaMenu", badania);
         }
 
+        //Wyświetlanie lekarzy na stronie index
+        public ActionResult DostepniLekarzeLista()
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult LekarzeLista()
+        {
+            var lekarze = db.Lekarz.ToList();
+            return PartialView("_LekarzeLista", lekarze);
+        }
+
+        public ActionResult LekarzeListaPokaz(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Session["IdLekarz"] = id;
+            //var wizytaLekarz = db.WizytaLekarz.Include(w => w.Lekarz);
+            var wizytalekarz = (from wl in db.WizytaLekarz
+                                 where wl.LekarzId == id
+                                 orderby wl.DataWizyty, wl.GodzinaWizyty
+                                 select wl).ToList();
+            return View(wizytalekarz);
+        }
+
         //Widok dla dostępnych wizyt na badania z layautDostepneWizytaBadanie
         public ActionResult DostepneWizytaBadaniaMenu()
         {
@@ -280,6 +308,7 @@ namespace PrzychodniaPOZ.Controllers
             }
             return View(pacjent);
         }
+
         
     }
 }

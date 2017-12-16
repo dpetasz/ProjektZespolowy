@@ -343,6 +343,10 @@
     <Content Include="Views\Wizyta\HistoriaWizytaBadanie.cshtml" />
     <Content Include="Views\Wizyta\UsunWizytaBadanie.cshtml" />
     <Content Include="Views\Wizyta\ZapiszWizytaBadanie.cshtml" />
+    <Content Include="Views\Admin\DostepniLekarzeLista.cshtml" />
+    <Content Include="Views\Shared\_LayoutLekarze.cshtml" />
+    <Content Include="Views\Shared\_LekarzeLista.cshtml" />
+    <Content Include="Views\Admin\LekarzeListaPokaz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
