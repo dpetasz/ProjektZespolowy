@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "DanePacjentaPokazWizytaLekarz";
     Layout = "~/Views/Shared/_LayoutDostepneWizytaLekarz.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 <h2>Dane Pacjenta (Wizyta Lekarz)</h2>

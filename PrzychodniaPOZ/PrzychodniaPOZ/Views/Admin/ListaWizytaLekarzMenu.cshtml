@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "ListaWizytaLekarzMenu";
     Layout = "~/Views/Shared/_LayoutDostepneWizytaLekarz.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 <h2>Lista dostępnych wizyt do Lekarza</h2>

@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "BadaniaMenu";
     Layout = "~/Views/Shared/_LayoutDostepneWizytaBadanie.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 

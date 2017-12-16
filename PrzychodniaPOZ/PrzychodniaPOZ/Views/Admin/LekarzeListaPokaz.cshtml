@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "LekarzeListaPokaz";
     Layout = "~/Views/Shared/_LayoutLekarze.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 <h2>Zapisane wizyty lekarzy</h2>

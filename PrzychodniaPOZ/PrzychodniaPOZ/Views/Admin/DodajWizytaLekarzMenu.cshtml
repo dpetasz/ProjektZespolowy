@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "SpecjalizacjaMenu";
     Layout = "~/Views/Shared/_LayoutDodajWizytaLekarz.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 <h2>Dodaj Wizytę do lekarza</h2>

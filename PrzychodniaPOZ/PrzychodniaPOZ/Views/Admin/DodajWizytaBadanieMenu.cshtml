@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "DodajWizytaBadanieMenu";
     Layout = "~/Views/Shared/_LayoutDodajWizytaBadanie.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 <h2>DodajWizytaBadanieMenu</h2>

@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutDodajWizytaLekarz.cshtml";
+    if (Session["PracownikId"] == null)
+    {
+        Response.Redirect("~/Admin/Logowanie");
+    }
 }
 
 <h2>Dodaj wizytę do lekarza</h2>
