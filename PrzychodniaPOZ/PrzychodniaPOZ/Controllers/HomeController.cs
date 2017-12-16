@@ -13,8 +13,7 @@ namespace PrzychodniaPOZ.Controllers
         
         public ActionResult Index()
         {
-            PrzychodniaContext db = new PrzychodniaContext();
-            var list = db.Lekarz.ToList();
+            
             return View();
         }
         [HttpGet]
