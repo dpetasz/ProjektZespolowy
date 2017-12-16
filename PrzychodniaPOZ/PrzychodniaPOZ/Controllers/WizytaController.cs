@@ -58,6 +58,30 @@ namespace PrzychodniaPOZ.Controllers
             return View(wizytaLekarz);
         }
 
+        [HttpGet]
+        public ActionResult ZapiszWizytaBadanie(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            WizytaBadanie wizytaBadanie = db.WizytaBadanie.Find(id);
+            if (wizytaBadanie == null)
+            {
+                return HttpNotFound();
+            }
+
+            Session["BadanieId"] = wizytaBadanie.Badanie.BadanieId;
+            Session["WizytaBadanieId"] = wizytaBadanie.WizytaBadanieId;
+            Session["DataBadania"] = wizytaBadanie.DataBadanie;
+            Session["GodzinaBadania"] = wizytaBadanie.GodzinaBadanie;
+
+            ViewBag.BadanieId = new SelectList(db.Badanie, "BadanieId", "Nazwa", wizytaBadanie.Badanie.BadanieId);
+
+            return View(wizytaBadanie);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ZapiszWizytaLekarz(WizytaLekarz wizytaLekarz)
@@ -132,23 +156,84 @@ namespace PrzychodniaPOZ.Controllers
             ViewBag.SpecjalizacjaId = new SelectList(db.Specjalizacja, "SpecjalizacjaId", "Nazwa", wizytaLekarz.SpecjalizacjaId);
             return View(wizytaLekarz);
         }
-        public ActionResult DostepneBadania()
+        public ActionResult DostepneWizytaBadanie()
         {
-            return Json(new { foo = "bar", baz = "Blech" });
+            var wizytaBadanie = (from wb in db.WizytaBadanie
+                                where wb.Status == false
+                                select wb).ToList();
+            return View(wizytaBadanie);
         }
 
-       
-        
-
-        public ActionResult ZapiszBadanie()
+       [HttpGet]
+        public ActionResult UsunWizytaBadanie(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            WizytaBadanie wizytaBadanie = db.WizytaBadanie.Find(id);
+            if (wizytaBadanie == null)
+            {
+                return HttpNotFound();
+            }
+
+            Session["BadanieId"] = wizytaBadanie.BadanieId;
+            Session["WizytaBadanieId"] = wizytaBadanie.WizytaBadanieId;
+            Session["DataBadania"] = wizytaBadanie.DataBadanie;
+            Session["GodzinaBadania"] = wizytaBadanie.GodzinaBadanie;
+
+
+            ViewBag.BadanieId = new SelectList(db.Badanie, "BadanieId", "Nazwa", wizytaBadanie.BadanieId);
+            return View(wizytaBadanie);
         }
 
-        public ActionResult UsunBadanie()
-        {
-            return View();
-        }
+       [HttpPost]
+       public ActionResult UsunWizytaBadanie(WizytaBadanie wizytaBadanie)
+       {
+           if (ModelState.IsValid)
+           {
+               wizytaBadanie.BadanieId = (int)Session["BadanieId"];
+               wizytaBadanie.PacjentId = null;
+               wizytaBadanie.GodzinaBadanie = (TimeSpan)Session["GodzinaBadania"];
+               wizytaBadanie.DataBadanie = (DateTime)Session["DataBadania"];
+
+
+               wizytaBadanie.Status = false;
+
+
+               db.Entry(wizytaBadanie).State = EntityState.Modified;
+               db.SaveChanges();
+               return RedirectToAction("HistoriaWizytaBadanie");
+           }
+           ViewBag.BadanieId = new SelectList(db.Badanie, "BadanieId", "Nazwa", wizytaBadanie.BadanieId);
+           return View(wizytaBadanie);
+       }
+
+
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+       public ActionResult ZapiszWizytaBadanie(WizytaBadanie wizytaBadanie)
+       {
+           if (ModelState.IsValid)
+           {
+               wizytaBadanie.BadanieId = (int)Session["BadanieId"];
+               wizytaBadanie.PacjentId = (int)Session["PacjentId"];
+               wizytaBadanie.GodzinaBadanie = (TimeSpan)Session["GodzinaBadania"];
+               wizytaBadanie.DataBadanie = (DateTime)Session["DataBadania"];
+
+
+               wizytaBadanie.Status = true;
+
+
+               db.Entry(wizytaBadanie).State = EntityState.Modified;
+               db.SaveChanges();
+               return RedirectToAction("DostepneWizytaBadanie");
+           }
+           ViewBag.BadanieId = new SelectList(db.Badanie, "BadanieId", "Nazwa", wizytaBadanie.BadanieId);
+           return View(wizytaBadanie);
+       }
+
 
         public ActionResult Zalogowany()
         {
@@ -164,9 +249,13 @@ namespace PrzychodniaPOZ.Controllers
             return View(wizytaLekarz);
         }
 
-        public ActionResult HistoriaBadanie()
+        public ActionResult HistoriaWizytaBadanie()
         {
-            return Json(new { foo = "bar", baz = "Blech" });
+            int id = (Int32)Session["PacjentId"];
+            var wizytaBadanie = (from wb in db.WizytaBadanie
+                                 where wb.PacjentId == id
+                                 select wb).ToList();
+            return View(wizytaBadanie);
         }
     }
 }

@@ -11,31 +11,27 @@
 
 <div class="jumbotron">
     <h1>Przychodnia POZ</h1>
-    <h2>Jesteś zalogowany jako :@Session["Name"].ToString()</h2>
+    <h2>Jesteś zalogowany jako: @Session["Name"].ToString()</h2>
     <p class="lead">Witamy na stronie przychodni POZ</p>
     <p><a href="" class="btn btn-primary btn-lg">Zobacz więcej</a></p>
 </div>
-<div class="row">
 
+<div class="row">
     <div class="col-md-4">
         <h2>Historia przychodni</h2>
         <p>
             Przejrzyj historię przychodni (wizyty i badania)
         </p>
-        <p><a class="btn btn-default" href="">Historia</a></p>
+        <p><a class="btn btn-default" @Html.ActionLink("Historia", "Historia", "Wizyta")</a></p>
     </div>
     <div class="col-md-4">
         <h2>Lekarze</h2>
         <p>Wyświetl dostępnych lekarzy</p>
-        <p><a class="btn btn-default" href="">Lekarze</a></p>
+        <p><a class="btn btn-default" @Html.ActionLink("Dostępni Lekarze", "DostepneWizytaLekarz", "Wizyta")</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Wyzyty do lekarza</h2>
-        <p>Wyświetl dostępne wizyty do lekarza</p>
-        <p><a class="btn btn-default" href="@Url.Action("DostepneWizytaLekarz", "Wizyta")">Dostępne wizyty</a></p>
-
-        <p>Wyświetl zapisane wizyty do lekarza</p>
-        <p><a class="btn btn-default" href="@Url.Action("HistoriaWizytaLekarz", "Wizyta")">Zapisane wizyty</a></p>
+        <h2>Badania</h2>
+        <p>Wyświetl dostępne badania</p>
+        <p><a class="btn btn-default" @Html.ActionLink("Dostępne Badania", "DostepneWizytaBadanie", "Wizyta")</a></p>
     </div>
-    
 </div>

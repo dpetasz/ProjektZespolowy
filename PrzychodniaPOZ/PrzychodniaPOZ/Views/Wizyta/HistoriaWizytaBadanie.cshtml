@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PrzychodniaPOZ.Models.WizytaBadanie>
+@{
+    ViewBag.Title = "HistoriaWizytaBadanie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Historia Badań</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Badanie
+        </th>
+        <th>
+            Data badania
+        </th>
+        <th>
+            Godzina badania
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Badanie.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataBadanie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodzinaBadanie)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Odwołaj badanie", "UsunWizytaBadanie", new { id = item.WizytaBadanieId })
+            </td>
+        </tr>
+    }
+</table>
