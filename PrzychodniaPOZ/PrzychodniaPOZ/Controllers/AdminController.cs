@@ -144,9 +144,10 @@ namespace PrzychodniaPOZ.Controllers
         [HttpGet]
         public ActionResult DodajWizytaBadanie(int? idBadanie)
         {
-
+            
             Session["idBad"] = idBadanie;
 
+            
             return View();
         }
 
